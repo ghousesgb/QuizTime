@@ -11,7 +11,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => MyApp());
       case '/bookinginfo':
         //if (args is String) {
-        return MaterialPageRoute(builder: (_) => BookingInfoScreen(/* data: args */));
+        return MaterialPageRoute(
+            builder: (_) => BookingInfoScreen(/* data: args */));
       //} else { return _errorRoute();}
       default:
         return _errorRoute();
@@ -22,10 +23,14 @@ class RouteGenerator {
     return MaterialPageRoute(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          title: Text('Error Page',),
+          title: Text(
+            'Error Page',
+          ),
         ),
-        body: Center(child: Text('Page Not Found'),),
-      )
+        body: Center(
+          child: Text('Page Not Found'),
+        ),
+      );
     });
   }
 }
