@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_time/AlertControllers/alertcontrollers.dart';
+import 'package:quiz_time/utilities/route_genarator.dart';
 
 import './InternetConnectionCheck/BaseState.dart';
 import './quiz.dart';
@@ -8,8 +9,11 @@ import './InternetConnectionCheck/connection_banner.dart';
 import './bookinginfo.dart';
 
 //void main() => runApp(MyApp());
-void main() =>
-    runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
+void main() => runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generatorRoute,
+    ));
 
 class MyApp extends StatefulWidget {
   MyApp({Key key, this.title}) : super(key: key);
@@ -69,8 +73,7 @@ class _MyAppState extends BaseState<MyApp> {
 
   void _navigateToBookingInfoScreen(BuildContext context) {
     isOnline
-        ? Navigator.push(context,
-            MaterialPageRoute(builder: (context) => BookingInfoScreen()))
+        ? Navigator.of(context).pushNamed('/bookinginfo')
         : simpleAlertController(context, "Problem",
             "You should be online to use this service, try when online");
   }
